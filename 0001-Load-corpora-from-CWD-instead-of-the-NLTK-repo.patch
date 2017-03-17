@@ -1,0 +1,36 @@
+From 89109eec3e7404eea3e7c187e8888bf09af6e4c8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jon=C3=A1=C5=A1=20Vidra?= <vidra@ufal.mff.cuni.cz>
+Date: Tue, 14 Mar 2017 17:07:33 +0100
+Subject: [PATCH 1/2] Load corpora from CWD instead of the NLTK repo
+
+---
+ lq-nlp-commons/dep/conll.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lq-nlp-commons/dep/conll.py b/lq-nlp-commons/dep/conll.py
+index 6b3454a..5da9a4e 100644
+--- a/lq-nlp-commons/dep/conll.py
++++ b/lq-nlp-commons/dep/conll.py
+@@ -58,7 +58,7 @@ class CoNLL06Treebank(CoNLLTreebank):
+     def __init__(self, root, max_length=None, files=None):
+         if files is None:
+             files = self.files
+-        corpus = dependency.DependencyCorpusReader(nltk.data.find('corpora/conll06/data/'+root), files)
++        corpus = dependency.DependencyCorpusReader(root, files)
+         CoNLLTreebank.__init__(self, corpus, None, max_length)
+ 
+ 
+@@ -169,8 +169,8 @@ class Chinese(CoNLL06Treebank):
+ 
+ 
+ class Czech(CoNLL06Treebank):
+-    root = 'czech/pdt/'
+-    files = ['train/czech.train', 'treebank/czech_pdt_test.conll']
++    root = './'
++    files = ['train.conll', 'test.conll']
+ 
+     def __init__(self, max_length=None, files=None):
+         CoNLL06Treebank.__init__(self, self.root, max_length, files)
+-- 
+2.10.2
+

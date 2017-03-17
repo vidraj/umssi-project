@@ -1,0 +1,10 @@
+--- uni-2/code/fast_dep.cpp     2010-08-26 20:31:28.000000000 +0200
++++ universal-knowledge/code/fast_dep.cpp       2017-01-09 22:07:45.897785016 +0100
+@@ -11,6 +11,7 @@
+ #include <assert.h>
+ #include <cmath>
+ #include <limits.h>
++#include <string.h>
+ #include "utilities.h"
+ using namespace std;
+
