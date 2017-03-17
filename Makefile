@@ -98,7 +98,7 @@ corpora/train-raw-tag1.conll: corpora/train-raw.conll
 # Get and patch DMV+CCM
 dmvccm: 0001-Load-corpora-from-CWD-instead-of-the-NLTK-repo.patch 0002-Port-treebank.py-to-new-NLTK-API.patch
 	git clone 'https://github.com/davidswelt/dmvccm.git'
-	git apply $^
+	cd dmvccm && git apply ${^:%=../%}
 
 # Unzip and patch Using Universal Linguistic Knowledge To Guide Grammar Induction
 universal-knowledge: ulk.zip ulk-map_czech ulk-string.patch ulk-makefile.patch
